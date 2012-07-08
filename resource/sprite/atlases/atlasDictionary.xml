@@ -1,6 +1,12 @@
 <?xml version="1.0" ?>
 <Root>
-    <Atlas border="1" height="1024" mode="RGBA" name="world_1" type="png" width="2048">
-        <image flipped="True" height="0.9990234375" imagefile="world-001-platforms-atlas-hd.png" width="0.74267578125" x="0.00048828125" y="0.0009765625"/>
+    <Atlas border="1" height="1024" mode="RGBA" name="world_1" type="png" width="512">
+        <image flipped="False" height="0.1474609375" imagefile="sprite_1.png" width="0.501953125" x="0.001953125" y="0.53515625"/>
+        <image flipped="False" height="0.134765625" imagefile="sprite_2.png" width="0.501953125" x="0.001953125" y="0.6845703125"/>
+        <image flipped="False" height="0.1064453125" imagefile="sprite_3.png" width="0.22265625" x="0.509765625" y="0.2001953125"/>
+        <image flipped="False" height="0.1708984375" imagefile="sprite_4.png" width="0.41796875" x="0.509765625" y="0.0009765625"/>
+        <image flipped="False" height="0.197265625" imagefile="sprite_5.png" width="0.50390625" x="0.001953125" y="0.0009765625"/>
+        <image flipped="False" height="0.169921875" imagefile="sprite_6.png" width="0.50390625" x="0.001953125" y="0.2001953125"/>
+        <image flipped="False" height="0.1611328125" imagefile="sprite_7.png" width="0.50390625" x="0.001953125" y="0.3720703125"/>
     </Atlas>
 </Root>
