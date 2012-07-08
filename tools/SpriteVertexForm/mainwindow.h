@@ -6,6 +6,10 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QSettings>
+#include <QtXml/QDomDocument>
+#include <QList>
+#include <QImage>
+#include "atlasimage.h"
 
 #define APP_NAME "SpriteVertexForm"
 
@@ -16,11 +20,17 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
     bool unsavedData;
     QSettings* settings;
 
+    QDomDocument doc;
+
+    QList<AtlasImage> atlasImages;
+    int atlasWidth;
+    int atlasHeight;
+
 public:
     MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
-    bool parseXML(QString & fileName);
+    bool parseXML(QString & directory, QString & fileName);
 
 public slots:
     void on_actionOpen_triggered();

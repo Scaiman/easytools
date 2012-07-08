@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
-    <height>351</height>
+    <width>670</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,11 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="2" column="0" colspan="2">
      <widget class="QScrollArea" name="scrollArea">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -25,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>408</width>
-         <height>239</height>
+         <width>386</width>
+         <height>266</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -37,22 +40,55 @@
       </widget>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QSlider" name="zoomSlider">
+    <item row="0" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QSlider" name="zoomSlider">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>50</number>
+        </property>
+        <property name="maximum">
+         <number>500</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="zoomSpin">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>50</number>
+        </property>
+        <property name="maximum">
+         <number>500</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2">
+     <widget class="QListWidget" name="imagesListWidget">
       <property name="enabled">
        <bool>false</bool>
       </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>500</number>
-      </property>
-      <property name="value">
-       <number>100</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
      </widget>
     </item>
@@ -63,7 +99,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>430</width>
+     <width>670</width>
      <height>36</height>
     </rect>
    </property>
@@ -126,12 +162,60 @@
    <slot>setZoom(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>46</y>
+     <x>91</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>82</x>
      <y>111</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoomSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zoomSpin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>83</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoomSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zoomSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>659</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoomSlider</sender>
+   <signal>actionTriggered(int)</signal>
+   <receiver>canvas</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>143</y>
     </hint>
    </hints>
   </connection>

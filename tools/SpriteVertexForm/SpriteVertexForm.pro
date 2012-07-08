@@ -13,3 +13,4 @@ FORMS += mainwindow.ui
 SOURCES += canvas.cpp main.cpp mainwindow.cpp
 
 CONFIG += debug
+QT += xml
