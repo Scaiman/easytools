@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<Root>
+    <Atlas border="1" height="1024" mode="RGBA" name="world_1" type="png" width="2048">
+        <image flipped="True" height="0.9990234375" imagefile="world-001-platforms-atlas-hd.png" width="0.74267578125" x="0.00048828125" y="0.0009765625"/>
+    </Atlas>
+</Root>
