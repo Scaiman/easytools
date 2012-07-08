@@ -5,12 +5,16 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QCloseEvent>
+#include <QSettings>
+
+#define APP_NAME "SpriteVertexForm"
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
     Q_OBJECT
     
     bool unsavedData;
+    QSettings* settings;
 
 public:
     MainWindow(QWidget* parent = 0);

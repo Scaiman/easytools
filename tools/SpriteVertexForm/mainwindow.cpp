@@ -1,15 +1,28 @@
 #include "mainwindow.h"
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QDir>
+#include <QFileInfo>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     setupUi(this);
     unsavedData = false;
+
+#if defined(WIN32) || defined(WIN64)
+    settings = new QSettings(
+        QString("%1/" APP_NAME ".conf").arg(qApp->applicationDirPath()),
+        QSettings::IniFormat
+    );
+#else
+    settings = new QSettings(APP_NAME);
+#endif
 }
 
 MainWindow::~MainWindow()
 {
+    delete settings;
 }
 
 void MainWindow::closeEvent(QCloseEvent* event)
@@ -20,6 +33,19 @@ void MainWindow::closeEvent(QCloseEvent* event)
 
 void MainWindow::on_actionOpen_triggered()
 {
+    QString lastDirectory = settings->value("lastDirectory", QDir::homePath()).toString();
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("Open XML File"),
+        lastDirectory,
+        tr("XML Files (*.xml);;All Files (*.*)")
+    );
+    
+    if (!fileName.isEmpty()) {
+        settings->setValue("lastDirectory",
+                            QFileInfo(fileName).absoluteDir().absolutePath());
+        zoomSlider->setEnabled(true);
+    }
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -36,9 +62,8 @@ void MainWindow::on_actionQuit_triggered()
     {
         if (QMessageBox::question(
                 this,
-                QString::fromUtf8("Quit"),
-                QString::fromUtf8("There's something unsaved. "
-                                  "Do you really wanna quit?"),
+                tr("Quit"),
+                tr("There's something unsaved. Do you really wanna quit?"),
                 QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes
            )
             qApp->quit();
