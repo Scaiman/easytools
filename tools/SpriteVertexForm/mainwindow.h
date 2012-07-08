@@ -20,6 +20,8 @@ public:
     MainWindow(QWidget* parent = 0);
     ~MainWindow();
 
+    bool parseXML(QString & fileName);
+
 public slots:
     void on_actionOpen_triggered();
     void on_actionSave_triggered();

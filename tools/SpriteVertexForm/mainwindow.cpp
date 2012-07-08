@@ -44,8 +44,18 @@ void MainWindow::on_actionOpen_triggered()
     if (!fileName.isEmpty()) {
         settings->setValue("lastDirectory",
                             QFileInfo(fileName).absoluteDir().absolutePath());
+
+        if (!parseXML(fileName))
+            return;
+
         zoomSlider->setEnabled(true);
+        setWindowTitle(QString(APP_NAME " - %1").arg(fileName));
     }
+}
+
+bool MainWindow::parseXML(QString & fileName)
+{
+    return true;
 }
 
 void MainWindow::on_actionSave_triggered()
